@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-	<head>
-		<meta charset="UTF-8" />
-		<title>Title</title>
-	</head>
-	<body>
-		<nav></nav>
-	</body>
-</html>
+<header class="header">
+	<img
+		src="../static/images_site/logo_semfundo.png"
+		alt="image-logo"
+		class="image-logo"
+	/>
+	<div class="navbar">
+		<a href="{{url_for('home')}}" class="item-navbar">Inicio</a>
+		<a href="{{url_for('usuarios')}}" class="item-navbar">Usuarios</a>
+		<a href="{{url_for('contato')}}" class="item-navbar">Contato</a>
+		<a href="{{url_for('login')}}" class="item-navbar">Login</a>
+		<a href="{{url_for('criarConta')}}" class="item-navbar">Criar Conta</a>
+	</div>
+</header>
