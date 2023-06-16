@@ -1,0 +1,7 @@
+# Bibliotecas Instaladas
+
+pip install flask
+pip install flask-sqlalchemy     # para criar o banco de dados
+pip install flask-login flask-bcrypt    # para login e criptografia de usuarios
+pip install flask-wtf       # Estrutura de formulários
+pip install email_validator     # Validação de e-mail

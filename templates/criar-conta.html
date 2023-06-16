@@ -1,6 +1,63 @@
 {% extends 'base.html' %} {% block body %}
 
-<h1>Criar Conta</h1>
-
-
+<div class="content-form-criarconta">
+	<form action="" class="form-criar-conta">
+		<div class="title-form-criar">Criar Conta</div>
+		<div class="item-form-criarconta">
+			<label for="name" class="label-form-criar">Nome</label>
+			<input
+				type="text"
+				class="input-form-criar"
+				name="name"
+				id="name"
+				required
+			/>
+		</div>
+		<div class="item-form-criarconta">
+			<label for="email" class="label-form-criar">E-mail</label>
+			<input
+				type="email"
+				class="input-form-criar"
+				name="email"
+				id="email"
+				required
+			/>
+		</div>
+		<div class="item-form-criarconta">
+			<label for="phone" class="label-form-criar">Telefone</label>
+			<input
+				type="text"
+				class="input-form-criar"
+				name="phone"
+				id="phone"
+				required
+			/>
+		</div>
+		<div class="item-form-criarconta">
+			<label for="pwd" class="label-form-criar">Senha</label>
+			<input
+				type="password"
+				class="input-form-criar"
+				name="pwd"
+				id="pwd"
+				required
+			/>
+		</div>
+		<div class="item-form-criarconta">
+			<label for="pwd-confirm" class="label-form-criar"
+				>Comfirme a senha</label
+			>
+			<input
+				type="password"
+				class="input-form-criar"
+				name="pwd-confirm"
+				id="pwd-confirm"
+				required
+			/>
+		</div>
+		<div class="item-form-criarconta">
+			<input type="submit" class="btn-form-criar" value="Criar Conta" />
+		</div>
+	</form>
+</div>
 {% endblock %}

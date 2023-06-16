@@ -1,6 +1,37 @@
 {% extends 'base.html' %} {% block body %}
 
-<h1>Login</h1>
+<div class="form-login">
+	<form action="" method="post" class="form-content">
+		<div class="item-form-login">
+			<label for="login" class="label-form-login">Usuário:</label>
+			<input
+				type="text"
+				name="login"
+				id="login"
+				class="input-form-login"
+				required
+			/>
+		</div>
+		<div class="item-form-login">
+			<label for="password" class="label-form-login">Senha:</label>
 
+			<input
+				type="password"
+				name="password"
+				id="password"
+				class="input-form-login"
+				required
+			/>
+		</div>
+		<div class="item-form-login">
+			<input type="submit" class="btn-form-login" value="Acessar" />
+		</div>
+		<div class="item-form-login">
+			<a href="{{url_for('criarConta')}}" class="link-criar-conta"
+				>Não possui conta? Criar Conta!</a
+			>
+		</div>
+	</form>
+</div>
 
 {% endblock %}
