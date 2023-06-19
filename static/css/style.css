@@ -10,6 +10,8 @@
 	font-family: "Roboto", sans-serif;
 }
 
+/* Configuration Header */
+
 .header {
 	background-color: #1e1e1e;
 	display: flex;
@@ -25,11 +27,11 @@
 
 .item-navbar {
 	padding: 10px 20px;
-	font-size: 18px;
+	font-size: 1rem;
 	color: #fff;
 	background-color: transparent;
 	border: 2px solid transparent;
-	border-radius: 15px;
+	border-radius: 10px;
 	gap: 30px;
 	transition: 0.5s;
 }
@@ -40,6 +42,32 @@
 	box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
+/* Alerta */
+
+.alert {
+	padding: 0.75rem 1.25rem;
+	margin-bottom: 1rem;
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
+}
+
+.alert-success {
+	background-color: #d4edda;
+	border-color: #c3e6cb;
+	color: #155724;
+	margin: 5px 20px;
+	padding: 12px 20px;
+}
+
+.alert-danger {
+	color: #721c24;
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
+	margin: 5px 20px;
+	padding: 12px 20px;
+}
+
+/* Configuração Formulário Login */
 .form-login {
 	background-color: #1e1e1e;
 	display: flex;
@@ -66,7 +94,7 @@
 }
 
 .label-form-login {
-	font-size: 25px;
+	font-size: 18px;
 	padding-bottom: 15px;
 }
 
@@ -89,20 +117,31 @@
 .btn-form-login {
 	font-size: 20px;
 	padding: 12px;
-	border-radius: 15px;
+	border-radius: 10px;
 	align-self: center;
 	background-color: #454545;
 	color: #69b4ff;
 	transition: 0.05s;
 }
 
+.lembrar-acesso-login {
+	padding: 0 20px;
+	display: flex;
+	flex-direction: row;
+}
+
+.checkbox-form-login {
+	margin-left: 5px;
+}
+
+.label-form-login-lembrar,
 .link-criar-conta {
 	color: #e1ffff;
 	text-align: center;
 }
 
 .btn-form-login:hover {
-	border-radius: 15px;
+	border-radius: 10px;
 	border-color: #e1ffff;
 	cursor: pointer;
 	transform: scale(1.05);
@@ -154,13 +193,42 @@
 
 .btn-form-criar:hover {
 	border-radius: 4px;
-	border-color: #e1ffff;
 	cursor: pointer;
 	transform: scale(1.05);
 }
 
+/* Validações Formulários */
+.invalid-feedback {
+	padding-top: 2px;
+	color: #ff4500;
+	font-size: 13px;
+}
+
+.is-invalid {
+	border-color: #e6051b;
+	box-shadow: 0 0 0 2px #f5c6cb;
+}
+
+@media screen and (max-width: 675px) {
+	.header,
+	.item-navbar {
+		padding: 10px;
+	}
+}
+
+@media screen and (max-width: 512px) {
+	.image-logo {
+		width: 60px;
+	}
+	.item-navbar {
+		flex-wrap: wrap;
+		padding: 2px;
+	}
+}
+
 @media screen and (max-width: 472px) {
 	/* Adicione esta media query */
+
 	.form-content {
 		padding: 20px; /* reduz a quantidade de preenchimento dentro do formulário */
 	}
@@ -175,6 +243,11 @@
 	.btn-form-login {
 		font-size: 18px; /* reduz a fonte do botão */
 	}
+
+	.form-criar-conta {
+		margin: 5px;
+		min-width: 200px;
+	}
 }
 
 @media screen and (max-width: 382px) {
@@ -182,14 +255,26 @@
 	.form-content {
 		padding: 10px; /* reduz a quantidade de preenchimento dentro do formulário */
 	}
+
 	.label-form-login {
 		font-size: 16px; /* ajusta a fonte do label */
 	}
 	.input-form-login {
 		font-size: 13px; /* reduz a fonte do input */
-		height: 25px; /* ajusta a altura do input */
+		height: 30px; /* ajusta a altura do input */
 	}
+
+	.link-criar-conta,
+	.lembrar-acesso-login {
+		font-size: 13px;
+	}
+
+	.btn-form-criar,
 	.btn-form-login {
 		font-size: 15px; /* reduz a fonte do botão */
+	}
+	.input-form-criar {
+		min-width: auto;
+		height: 30px;
 	}
 }

@@ -1,30 +1,43 @@
 {% extends 'base.html' %} {% block body %}
 
 <div class="form-login">
-	<form action="" method="post" class="form-content">
+	<form method="POST" action="" class="form-content">
+		{{ form_login.csrf_token}}
 		<div class="item-form-login">
-			<label for="login" class="label-form-login">Usuário:</label>
-			<input
-				type="text"
-				name="login"
-				id="login"
-				class="input-form-login"
-				required
-			/>
-		</div>
-		<div class="item-form-login">
-			<label for="password" class="label-form-login">Senha:</label>
+			{{ form_login.email.label(class="label-form-login") }}
+			{% if form_login.email.errors %}
+				{{ form_login.email(class="input-form-login is-invalid") }}		<!-- Adicionada classe is-invalid para customizar validação invalida-->
+			<div class="invalid-feedback">
+				{% for erro in form_login.email.errors %}
+					{{ erro }}
+				{% endfor %}
+			</div>
+			{% else %}
+				{{ form_login.email(class="input-form-login") }}
+			{% endif %}
 
-			<input
-				type="password"
-				name="password"
-				id="password"
-				class="input-form-login"
-				required
-			/>
 		</div>
 		<div class="item-form-login">
-			<input type="submit" class="btn-form-login" value="Acessar" />
+			{{ form_login.senha.label(class="label-form-login")}}
+			{% if form_login.senha.errors %}
+				{{ form_login.senha(class="input-form-login is-invalid") }}
+			<div class="invalid-feedback">
+				{% for erro in form_login.senha.errors %}
+					{{ erro }}
+				{% endfor %}
+			</div>
+			{% else %}
+				{{ form_login.senha(class="input-form-login") }}
+			{% endif %}
+
+		</div>
+		<div class="item-form-login lembrar-acesso-login">
+			{{ form_login.lembrar_dados.label(class="label-form-login-lembrar") }}
+			{{ form_login.lembrar_dados(class="checkbox-form-login") }}
+		</div>
+
+		<div class="item-form-login">
+			{{ form_login.botao_submit_login(class="btn-form-login") }}
 		</div>
 		<div class="item-form-login">
 			<a href="{{url_for('criarConta')}}" class="link-criar-conta"

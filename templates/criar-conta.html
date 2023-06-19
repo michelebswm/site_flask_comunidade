@@ -1,62 +1,77 @@
 {% extends 'base.html' %} {% block body %}
 
 <div class="content-form-criarconta">
-	<form action="" class="form-criar-conta">
+	<form method="POST" action="" class="form-criar-conta">
+		{{ form_criarconta.csrf_token}}
 		<div class="title-form-criar">Criar Conta</div>
 		<div class="item-form-criarconta">
-			<label for="name" class="label-form-criar">Nome</label>
-			<input
-				type="text"
-				class="input-form-criar"
-				name="name"
-				id="name"
-				required
-			/>
+			{{ form_criarconta.username.label(class="label-form-criar") }}
+			{% if form_criarconta.username.errors %}
+				{{form_criarconta.username(class="input-form-criar is-invalid") }}
+			<div class="invalid-feedback">
+				{% for erro in form_criarconta.username.errors %}
+					{{ erro }}
+				{% endfor %}
+			</div>
+			{% else %}
+				{{form_criarconta.username(class="input-form-criar") }}
+			{% endif %}
+
 		</div>
 		<div class="item-form-criarconta">
-			<label for="email" class="label-form-criar">E-mail</label>
-			<input
-				type="email"
-				class="input-form-criar"
-				name="email"
-				id="email"
-				required
-			/>
+			{{ form_criarconta.email.label(class="label-form-criar") }}
+			{% if form_criarconta.email.errors %}
+				{{form_criarconta.email(class="input-form-criar is-invalid") }}
+			<div class="invalid-feedback">
+				{% for erro in form_criarconta.email.errors %}
+					{{ erro }}
+				{% endfor %}
+			</div>
+			{% else %}
+				{{form_criarconta.email(class="input-form-criar") }}
+			{% endif %}
 		</div>
 		<div class="item-form-criarconta">
-			<label for="phone" class="label-form-criar">Telefone</label>
-			<input
-				type="text"
-				class="input-form-criar"
-				name="phone"
-				id="phone"
-				required
-			/>
+			{{ form_criarconta.telefone.label(class="label-form-criar") }}
+			{% if form_criarconta.telefone.errors %}
+				{{form_criarconta.telefone(class="input-form-criar is-invalid") }}
+			<div class="invalid-feedback">
+				{% for erro in form_criarconta.telefone.errors %}
+					{{ erro }}
+				{% endfor %}
+			</div>
+			{% else %}
+				{{form_criarconta.telefone(class="input-form-criar") }}
+			{% endif %}
 		</div>
 		<div class="item-form-criarconta">
-			<label for="pwd" class="label-form-criar">Senha</label>
-			<input
-				type="password"
-				class="input-form-criar"
-				name="pwd"
-				id="pwd"
-				required
-			/>
+			{{ form_criarconta.senha.label(class="label-form-criar") }}
+			{% if form_criarconta.senha.errors %}
+				{{form_criarconta.senha(class="input-form-criar is-invalid") }}
+			<div class="invalid-feedback">
+				{% for erro in form_criarconta.senha.errors %}
+					{{ erro }}
+				{% endfor %}
+			</div>
+			{% else %}
+				{{form_criarconta.senha(class="input-form-criar") }}
+			{% endif %}
 		</div>
 		<div class="item-form-criarconta">
-			<label for="pwd-confirm" class="label-form-criar"
-				>Comfirme a senha</label
-			>
-			<input
-				type="password"
-				class="input-form-criar"
-				name="pwd-confirm"
-				id="pwd-confirm"
-				required
-			/>
+			{{ form_criarconta.confirmacao_senha.label(class="label-form-criar") }}
+			{% if form_criarconta.confirmacao_senha.errors %}
+				{{form_criarconta.confirmacao_senha(class="input-form-criar is-invalid") }}
+			<div class="invalid-feedback">
+				{% for erro in form_criarconta.confirmacao_senha.errors %}
+					{{ erro }}
+				{% endfor %}
+			</div>
+			{% else %}
+				{{form_criarconta.confirmacao_senha(class="input-form-criar") }}
+			{% endif %}
 		</div>
 		<div class="item-form-criarconta">
-			<input type="submit" class="btn-form-criar" value="Criar Conta" />
+			{{ form_criarconta.botao_submit_criarconta(class="btn-form-criar") }}
 		</div>
 	</form>
 </div>
