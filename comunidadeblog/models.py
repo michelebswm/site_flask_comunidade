@@ -1,4 +1,4 @@
-from routes import database
+from comunidadeblog import database
 from datetime import datetime
 
 class Usuario(database.Model):
@@ -9,7 +9,7 @@ class Usuario(database.Model):
     senha = database.Column(database.String(20), nullable=False)
     foto_perfil = database.Column(database.String, default='default.jpg', nullable=False)
     posts = database.relationship('Post', backref='autor', lazy=True)      # primeiro parametro 'Post' se refere a classe Post e backre='autor
-    cursos = database.Columns(database.String, nullable=False, default='Não Informado')
+    cursos = database.Column(database.String, nullable=False, default="Não Informado")
 
 class Post(database.Model):
     id = database.Column(database.Integer, primary_key=True)

@@ -1,19 +1,12 @@
-from flask import Flask, render_template, url_for, request, flash, redirect
-from forms import FormLogin, FormCriarConta
-from flask_sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
+from flask import render_template, request, flash, redirect, url_for
+from comunidadeblog import app
+from comunidadeblog.forms import FormLogin, FormCriarConta
 
 lista_usuarios = ['Michele', 'Wallace', 'Murilo', 'Karol']
-app.config['SECRET_KEY'] = 'ec3110c1be98aef6ed6acd9976fcedb7'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///projeto.db'
-
-database = SQLAlchemy(app)
 
 @app.route('/')
 def home():
     return render_template('home.html')
-
 
 @app.route('/usuarios')
 def usuarios():
@@ -42,6 +35,3 @@ def criarConta():
         return redirect(url_for('home'))
     return render_template('criar-conta.html', form_criarconta = form_criarconta)
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
