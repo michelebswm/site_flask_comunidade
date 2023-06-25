@@ -1,4 +1,5 @@
-from comunidadeblog.routes import app, database
+from comunidadeblog import app, database
+from comunidadeblog.models import Usuario
 
 # Criando banco de dados automaticamente ele cria uma pasta chamada instance e salva o db
 # with app.app_context():
@@ -8,6 +9,9 @@ with app.app_context():
     database.drop_all()     # Deleta tudo que tem no banco
     database.create_all()
 
+# with app.app_context():
+#     usuario = Usuario.query.filter_by(username='Wallace').first()
+#     print(usuario.senha)
 
 # Incluindo dados no banco de dados
 # with app.app_context():
