@@ -10,8 +10,12 @@
 	font-family: "Roboto", sans-serif;
 }
 
-/* Configuration Header */
+/* Configuração especifica page login */
+body.login-page {
+	background-color: #1e1e1e;
+}
 
+/* Configuration Header */
 .header {
 	background-color: #1e1e1e;
 	display: flex;
@@ -63,6 +67,14 @@
 	color: #721c24;
 	background-color: #f8d7da;
 	border-color: #f5c6cb;
+	margin: 5px 20px;
+	padding: 12px 20px;
+}
+
+.alert-info {
+	color: #0c5460;
+	background-color: #d1ecf1;
+	border-color: bee5eb;
 	margin: 5px 20px;
 	padding: 12px 20px;
 }
@@ -207,6 +219,114 @@
 .is-invalid {
 	border-color: #e6051b;
 	box-shadow: 0 0 0 2px #f5c6cb;
+}
+
+/* Configuração minhaconta */
+.container-minhaconta {
+	padding: 2.5rem;
+}
+
+.content-minhaconta {
+	padding: 1rem;
+	display: flex;
+	justify-content: center;
+	background-color: #e9ebee;
+	border: 1px solid transparent;
+	border-radius: 0.5rem;
+	max-width: 670px;
+	margin: 0 auto; /* Centraliza o elemento horizontalmente */
+}
+
+.form-dados-conta {
+	padding-left: 1rem;
+	flex: 1 0 140px;
+}
+
+.form-row {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+}
+
+.form-row label {
+	font-size: 1em;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+}
+
+.form-row input {
+	font-size: 1em;
+	height: 1.8rem;
+	width: 360px;
+}
+
+.contagem-bloco {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: #e9ebee;
+	border-radius: 8px;
+	box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.1); /* cria uma sombra interna inset */
+	height: 100px;
+	margin-top: 30px;
+	padding: 10px;
+	width: 360px;
+}
+
+/*flex-grow: 1 - indica para o navegador que esse elemento deve crescer dentro do contêiner pai, o que significa que ele vai ocupar todo o espaço disponível horizontalmente. O flex-grow é uma propriedade do modelo de layout CSS Flexbox, que permite que os elementos ajustem sua largura automaticamente com base no tamanho do contêiner pai.*/
+.post-bloco,
+.curso-bloco {
+	flex-grow: 1;
+	text-align: center;
+}
+
+.label-bloco {
+	display: block;
+	font-size: 0.8rem;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.contador-bloco {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #006fff;
+}
+
+.form-actions {
+	display: flex;
+	gap: 0.5rem;
+	margin-top: 1rem;
+}
+
+.btn-minhaconta {
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+	transition: 0.05s;
+}
+
+#btn_editar_perfil {
+	background-color: #4caf50;
+}
+
+#btn_salvar_perfil {
+	background-color: #69b4ff;
+}
+
+.btn-minhaconta:hover {
+	cursor: pointer;
+	transform: scale(1.03);
+}
+
+.image-perfil {
+	width: 250px;
+	height: 250px;
+	border: 1px solid;
+	border-radius: 8px;
 }
 
 @media screen and (max-width: 675px) {

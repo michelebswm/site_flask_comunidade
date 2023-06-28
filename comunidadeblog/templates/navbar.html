@@ -8,7 +8,13 @@
 		<a href="{{url_for('home')}}" class="item-navbar">Inicio</a>
 		<a href="{{url_for('usuarios')}}" class="item-navbar">Usuarios</a>
 		<a href="{{url_for('contato')}}" class="item-navbar">Contato</a>
-		<a href="{{url_for('login')}}" class="item-navbar">Login</a>
-		<a href="{{url_for('criarConta')}}" class="item-navbar">Criar Conta</a>
+		{% if current_user.is_authenticated %}
+			<a href="{{url_for('criar_post')}}" class="item-navbar">Criar Post</a>
+			<a href="{{url_for('minha_conta')}}" class="item-navbar">Minha Conta</a>
+			<a href="{{url_for('logout')}}" class="item-navbar">Sair</a>
+		{% else %}
+			<a href="{{url_for('login')}}" class="item-navbar">Login</a>
+			<a href="{{url_for('criarConta')}}" class="item-navbar">Criar Conta</a>
+		{% endif %}
 	</div>
 </header>
