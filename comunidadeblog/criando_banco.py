@@ -10,8 +10,8 @@ with app.app_context():
     database.create_all()
 
 # with app.app_context():
-#     usuario = Usuario.query.filter_by(username='Wallace').first()
-#     print(usuario.senha)
+#     usuario = Usuario.query.filter_by(email='wallace5@uol.com.br').first()
+#     print(usuario.cursos)
 
 # Incluindo dados no banco de dados
 # with app.app_context():

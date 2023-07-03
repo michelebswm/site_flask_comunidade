@@ -1,8 +1,11 @@
 from flask import render_template, request, flash, redirect, url_for
 from comunidadeblog import app, database, bcrypt
-from comunidadeblog.forms import FormLogin, FormCriarConta
+from comunidadeblog.forms import FormLogin, FormCriarConta, FormEditarPerfil
 from comunidadeblog.models import Usuario
 from flask_login import login_user, logout_user, current_user, login_required
+import secrets
+import os
+from PIL import Image
 
 lista_usuarios = ['Michele', 'Wallace', 'Murilo', 'Karol']
 
@@ -73,3 +76,53 @@ def minha_conta():
 @login_required
 def criar_post():
     return render_template('criarpost.html')
+
+
+def salvar_imagem(imagem):
+    # Adicionar código aleatório no nome da imagem
+    codigo = secrets.token_hex()
+    nome, extensao = os.path.splitext(imagem.filename)  # Separa o nome e a extensão da imagem.filename
+    nome_tratado = nome + codigo + extensao # Concatena os 3 textos.
+    # Reduzir o nome da imagem
+    tamanho = (400, 400)    # Imagem será salva como 200x200
+    imagem_reduzida = Image.open(imagem)
+    imagem_reduzida.thumbnail(tamanho)
+    # Salvar a imagem na pasta fotos_perfil
+    caminho_completo = os.path.join(app.root_path, 'static/fotos_perfil', nome_tratado)
+    imagem_reduzida.save(caminho_completo)
+    return nome_tratado
+
+
+def atualizar_cursos(form):
+    lista_cursos = []
+    for campo in form:
+        if 'curso_' in campo.name:
+            if campo.data:
+                # Adicionar o texto do campo.label na lista de cursos
+                lista_cursos.append(campo.label.text)
+    return ';'.join(lista_cursos)
+
+
+@app.route('/minhaconta/editar', methods=['GET', 'POST'])
+@login_required
+def editar_perfil():
+    form_editarperfil = FormEditarPerfil()
+    if form_editarperfil.validate_on_submit() and 'botao_submit_editarperfil' in request.form:
+        # Alterando informações do current_user para as informações preenchidas no formulário .data
+        current_user.email = form_editarperfil.email.data
+        current_user.username = form_editarperfil.username.data
+        current_user.telefone = form_editarperfil.telefone.data
+        if form_editarperfil.foto_perfil.data:
+            nome_arquivo_imagem = salvar_imagem(form_editarperfil.foto_perfil.data)
+            current_user.foto_perfil = nome_arquivo_imagem
+        current_user.cursos = atualizar_cursos(form_editarperfil)
+        database.session.commit()
+        flash('Perfil atualizado com sucesso!', 'alert-success')
+        return redirect(url_for('minha_conta'))
+    elif request.method == 'GET':        # Preenche os inputs dos formulários com os dados do banco
+        form_editarperfil.email.data = current_user.email
+        form_editarperfil.username.data = current_user.username
+        form_editarperfil.telefone.data = current_user.telefone
+    foto_perfil = url_for('static', filename='fotos_perfil/{}'.format(current_user.foto_perfil))
+    return render_template('editar_perfil.html', form_editarperfil=form_editarperfil, foto_perfil=foto_perfil)
+

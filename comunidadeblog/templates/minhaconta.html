@@ -2,7 +2,25 @@
 
 <div class="container-minhaconta">
 	<div class="content-minhaconta">
-		<img src="{{ foto_perfil }}" class="image-perfil" alt="imagem-perfil" />
+		<div class="lado">
+			<img
+				src="{{ foto_perfil }}"
+				class="image-perfil"
+				alt="imagem-perfil"
+			/>
+			<div class="form-actions">
+				<a href="{{ url_for('editar_perfil') }}">
+					<button
+						type="submit"
+						id="btn_editar_perfil"
+						name="btn_editar_perfil"
+						class="btn-minhaconta"
+					>
+						Editar
+					</button>
+				</a>
+			</div>
+		</div>
 		<div class="form-dados-conta">
 			<div class="form-row">
 				<label class="label-minhaconta">Nome:</label>
@@ -40,34 +58,29 @@
 			<div class="contagem-bloco">
 				<div class="curso-bloco">
 					<label class="label-bloco">Cursos:</label>
-					<div class="contador-bloco">0</div>
+					<div class="contador-bloco">
+						{% if 'Não Informado' in current_user.cursos %} 0 {%
+						else %} {{ current_user.cursos.count(';') + 1 }} {%
+						endif %}
+					</div>
 				</div>
 				<div class="post-bloco">
 					<label class="label-bloco">Posts:</label>
 					<div class="contador-bloco">0</div>
 				</div>
 			</div>
-
-			<div class="form-actions">
-				<button
-					type="submit"
-					id="btn_editar_perfil"
-					name="btn_editar_perfil"
-					class="btn-minhaconta"
-				>
-					Editar
-				</button>
-				<button
-					type="submit"
-					id="btn_salvar_perfil"
-					name="btn_salvar_perfil"
-					class="btn-minhaconta"
-				>
-					Salvar Alterações
-				</button>
+			<div class="meuscursos">
+				<div class="title-meuscursos">Cursos</div>
+				<div class="item-cursos">
+					{% for curso in current_user.cursos.split(';') %}
+					<button disabled="disabled" class="cursos-btn">
+						{{ curso }}
+					</button>
+					{% endfor %}
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-{% endblock %}
+{% block form_editar_perfil %} {% endblock %} {% endblock %}
