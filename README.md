@@ -16,7 +16,7 @@ Este projeto é um site desenvolvido em Python utilizando o framework Flask e o 
 ## Configuração
 
 1. Clone o repositório:
-git clone [https://github.com/seu-usuario/meu-projeto-flask.git](https://github.com/michelebswm/site_flask_comunidade.git)
+git clone https://github.com/michelebswm/site_flask_comunidade.git
 
 
 2. Instale as dependências do projeto:
