@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Sofia&display=swap");
 * {
 	padding: 0;
 	margin: 0;
@@ -429,6 +430,70 @@ h4 {
 	max-width: 200px;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 	transition: 0.05s;
+}
+
+.title-usuarios {
+	font: 2rem bold;
+	margin: 10px 0;
+	text-align: center;
+}
+
+/* Customização form_criarpost */
+.container-criarpost {
+	padding: 30px;
+}
+
+.content-criarpost {
+	max-width: 780px;
+	font-family: "Sofia", cursive;
+	border: 1px solid #006fff;
+	border-radius: 4px;
+	padding: 25px;
+	margin: 0 auto;
+}
+
+.item-criarpost {
+	display: flex;
+	flex-direction: column;
+}
+
+.label-criarpost {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.item-criarpost input {
+	height: 30px;
+	border: 1px solid;
+	border-radius: 3px;
+	padding-left: 5px;
+}
+
+.item-criarpost textarea {
+	height: 150px;
+	border-radius: 3px;
+	padding-left: 5px;
+}
+
+.title-criarpost {
+	font-size: 25px;
+	color: #0085ff;
+	font-weight: bold;
+}
+
+.btn-criarpost {
+	background-color: #454545;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	padding: 0.4rem;
+	margin-top: 10px;
+	cursor: pointer;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-criarpost:hover {
+	transform: scale(1.03);
 }
 
 @media screen and (max-width: 675px) {

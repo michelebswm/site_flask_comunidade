@@ -1,13 +1,12 @@
 from flask import render_template, request, flash, redirect, url_for
 from comunidadeblog import app, database, bcrypt
-from comunidadeblog.forms import FormLogin, FormCriarConta, FormEditarPerfil
-from comunidadeblog.models import Usuario
+from comunidadeblog.forms import FormLogin, FormCriarConta, FormEditarPerfil, FormCriarPost
+from comunidadeblog.models import Usuario, Post
 from flask_login import login_user, logout_user, current_user, login_required
 import secrets
 import os
 from PIL import Image
 
-lista_usuarios = ['Michele', 'Wallace', 'Murilo', 'Karol']
 
 @app.route('/')
 def home():
@@ -16,6 +15,7 @@ def home():
 @app.route('/usuarios')
 @login_required
 def usuarios():
+    lista_usuarios = Usuario.query.all()
     return render_template('usuarios.html', lista_usuarios=lista_usuarios)
 
 
@@ -72,10 +72,17 @@ def minha_conta():
     foto_perfil = url_for('static', filename='fotos_perfil/{}'.format(current_user.foto_perfil))
     return render_template('minhaconta.html', foto_perfil=foto_perfil)
 
-@app.route('/post/criar')
+@app.route('/post/criar', methods=['GET', 'POST'])
 @login_required
 def criar_post():
-    return render_template('criarpost.html')
+    form_criarpost = FormCriarPost()
+    if form_criarpost.validate_on_submit() and 'btn_submit_criarpost' in request.form:
+        post = Post(titulo=form_criarpost.titulo.data, corpo=form_criarpost.corpo.data, id_usuario=current_user.id)
+        database.session.add(post)
+        database.session.commit()
+        flash('Post criado com sucesso!', 'alert-success')
+        return redirect(url_for('home'))
+    return render_template('criarpost.html', form_criarpost=form_criarpost)
 
 
 def salvar_imagem(imagem):

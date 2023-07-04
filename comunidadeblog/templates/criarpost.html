@@ -1,5 +1,35 @@
 {% extends 'base.html' %} {% block body %}
-
-<h1>Criar Post</h1>
-
+<div class="container-criarpost">
+	<div class="content-criarpost">
+		<form method="POST" action="" class="content-form-criarpost">
+			{{ form_criarpost.csrf_token }}
+			<div class="title-criarpost">Incluir Post</div>
+			<div class="item-criarpost">
+				{{ form_criarpost.titulo.label(class="label-criarpost") }}
+                {% if form_criarpost.titulo.errors %}
+                    {{ form_criarpost.titulo(class="input-criarconta is-invalid") }}
+                    {% for erro in form_criarpost.titulo.errors %}
+                        <div class="invalid-feedback">{{ erro }}</div>
+                    {% endfor %}
+                {% else %}
+                    {{ form_criarpost.titulo(class="input-criarconta") }}
+                {% endif %}
+			</div>
+			<div class="item-criarpost">
+				{{ form_criarpost.corpo.label(class="label-criarpost") }}
+                {% if form_criarpost.corpo.errors %}
+                    {{ form_criarpost.corpo(class="input-criarconta is-invalid") }}
+                    {% for erro in form_criarpost.corpo.errors %}
+                        <div class="invalid-feedback">{{ erro }}</div>
+                    {% endfor %}
+                {% else %}
+                    {{ form_criarpost.corpo(class="input-criarconta") }}
+                {% endif %}
+			</div>
+			<div class="form-actions-criarpost">
+				{{ form_criarpost.btn_submit_criarpost(class="btn-criarpost") }}
+			</div>
+		</form>
+	</div>
+</div>
 {% endblock %}

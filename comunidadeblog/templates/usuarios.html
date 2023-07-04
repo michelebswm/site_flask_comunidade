@@ -1,7 +1,79 @@
 {% extends 'base.html' %} {% block body %}
 
-<h1>Usuarios</h1>
+<div class="title-usuarios">Usuários</div>
 {% for usuario in lista_usuarios %}
-<p>{{ usuario }}</p>
-{% endfor %} 
+
+    <div class="container-minhaconta">
+
+        <div class="content-minhaconta">
+            <div class="lado">
+                <img
+                    src="{{ url_for('static', filename='fotos_perfil/{}'.format(usuario.foto_perfil)) }}"
+                    class="image-perfil"
+                    alt="imagem-perfil"
+                />
+            </div>
+            <div class="form-dados-conta">
+                <div class="form-row">
+                    <label class="label-minhaconta">Nome:</label>
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        class="input-minhaconta"
+                        value="{{ usuario.username }}"
+                        disabled
+                    />
+                </div>
+                <div class="form-row">
+                    <label class="label-minhaconta">E-mail:</label>
+                    <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        class="input-minhaconta"
+                        value="{{ usuario.email }}"
+                        disabled
+                    />
+                </div>
+                <div class="form-row">
+                    <label class="label-minhaconta">Telefone:</label>
+                    <input
+                        type="text"
+                        name="telefone"
+                        id="telefone"
+                        class="input-minhaconta"
+                        value="{{ usuario.telefone }}"
+                        disabled
+                    />
+                </div>
+                <div class="contagem-bloco">
+                    <div class="curso-bloco">
+                        <label class="label-bloco">Cursos:</label>
+                        <div class="contador-bloco">
+                            {% if 'Não Informado' in usuario.cursos %} 0 {%
+                            else %} {{ usuario.cursos.count(';') + 1 }} {%
+                            endif %}
+                        </div>
+                    </div>
+                    <div class="post-bloco">
+                        <label class="label-bloco">Posts:</label>
+                        <div class="contador-bloco">0</div>
+                    </div>
+                </div>
+                <div class="meuscursos">
+                    <div class="title-meuscursos">Cursos</div>
+                    <div class="item-cursos">
+                        {% for curso in usuario.cursos.split(';') %}
+                        <button disabled="disabled" class="cursos-btn">
+                            {{ curso }}
+                        </button>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
 {% endblock %}
