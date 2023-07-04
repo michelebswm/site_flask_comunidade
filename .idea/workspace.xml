@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da66474a-4f94-4fce-841e-d2bf0ceb42e1" name="Changes" comment="edicao-perfil">
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/templates/criarpost.html" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/templates/criarpost.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/templates/minhaconta.html" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/templates/minhaconta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/templates/usuarios.html" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/templates/usuarios.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instance/projeto.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/projeto.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
