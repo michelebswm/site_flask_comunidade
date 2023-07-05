@@ -10,7 +10,8 @@ from PIL import Image
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    lista_posts = Post.query.all()
+    return render_template('home.html', lista_posts=lista_posts)
 
 @app.route('/usuarios')
 @login_required
@@ -77,7 +78,7 @@ def minha_conta():
 def criar_post():
     form_criarpost = FormCriarPost()
     if form_criarpost.validate_on_submit() and 'btn_submit_criarpost' in request.form:
-        post = Post(titulo=form_criarpost.titulo.data, corpo=form_criarpost.corpo.data, id_usuario=current_user.id)
+        post = Post(titulo=form_criarpost.titulo.data, corpo=form_criarpost.corpo.data, autor=current_user)
         database.session.add(post)
         database.session.commit()
         flash('Post criado com sucesso!', 'alert-success')

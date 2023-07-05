@@ -1,5 +1,41 @@
 {% extends 'base.html' %} {% block body %}
 
-<h1>Home</h1>
+<div class="container-home">
+	<div class="title-home">Comunidade Impressionadora</div>
+	<div class="subtitle-home">
+		Aqui você encontra tudo que a comunidade do Python tem para oferecer
+	</div>
+	<hr />
+	<div class="container-postlist">
+		{% for post in lista_posts %}
+		<div class="content-postlist">
+			<div class="dados-autor-post">
+				<div class="criador-post">
+					{{ post.autor.username }} {{ post.autor.email }}
+				</div>
+				<img
+					src="{{ url_for('static', filename='fotos_perfil/{}'.format(post.autor.foto_perfil)) }}"
+					class="image-perfil-post"
+					alt="imagem-perfil"
+				/>
+				<div class="meuscursos">
+					<div class="title-meuscursos">Cursos</div>
+					<div class="item-cursos">
+						{% for curso in post.autor.cursos.split(';') %}
+						<button disabled="disabled" class="cursos-btn">
+							{{ curso }}
+						</button>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			<div class="dados-post">
+				<div class="titulo-dados-post">{{ post.titulo }}</div>
+				<div class="corpo-dados-post">{{ post.corpo }}</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
 
 {% endblock %}
