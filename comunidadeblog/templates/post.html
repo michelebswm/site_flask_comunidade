@@ -1,0 +1,91 @@
+{% extends 'base.html' %} {% block body %}
+
+<div class="container-home">
+	<div class="container-postlist">
+		<div class="content-postlist">
+			<div class="dados-autor-post">
+				<img
+					src="{{ url_for('static', filename='fotos_perfil/{}'.format(post.autor.foto_perfil)) }}"
+					class="image-perfil-post"
+					alt="imagem-perfil"
+				/>
+				<div class="criador-post">{{ post.autor.username }}</div>
+				<div class="meuscursos">
+					<div class="item-cursos">
+						{% for curso in post.autor.cursos.split(';') %}
+						<button disabled="disabled" class="cursos-btn">
+							{{ curso }}
+						</button>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			<div class="dados-post">
+				<div class="titulo-dados-post">{{ post.titulo }}
+				{% if form_editarpost %}
+					<button class="btn-excluir-post" onclick="exibirModal()">Excluir</button>
+					<div id="modal-confirmacao" class="modal">
+						<div class="modal-content">
+							<div class="modal-header">
+								<div class="title-modal">Excluir Post</div>
+								<span class="fechar" onclick="fecharModal()">&times</span>
+							</div>
+							<div class="question-confirm">Deseja realmente excluir? (Essa ação não pode ser desfeita)</div>
+							<div class="modal-footer">
+								<form method="POST" action="{{ url_for('excluir_post', post_id = post.id) }}">
+									<button type="submit" class="btn-confirmar" onclick="excluirItem()">Confirmar</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+				<div class="data-criacao-post">
+					Data de criação: {{
+					post.data_criacao.strftime("%d/%m/%Y") }}
+				</div>
+				</div>
+				<div class="corpo-dados-post">{{ post.corpo }}</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% if form_editarpost %}
+	<div class="container-criarpost">
+		<div class="content-criarpost">
+			<form method="POST" action="" class="content-form-criarpost">
+				{{ form_editarpost.csrf_token }}
+				<div class="title-criarpost">Edição de Post</div>
+				<div class="item-criarpost">
+					{{ form_editarpost.titulo.label(class="label-criarpost") }}
+					{% if form_editarpost.titulo.errors %}
+						{{ form_editarpost.titulo(class="input-criarconta is-invalid") }}
+						{% for erro in form_editarpost.titulo.errors %}
+							<div class="invalid-feedback">{{ erro }}</div>
+						{% endfor %}
+					{% else %}
+						{{ form_editarpost.titulo(class="input-criarconta") }}
+					{% endif %}
+				</div>
+				<div class="item-criarpost">
+					{{ form_editarpost.corpo.label(class="label-criarpost") }}
+					{% if form_editarpost.corpo.errors %}
+						{{ form_editarpost.corpo(class="input-criarconta is-invalid") }}
+						{% for erro in form_editarpost.corpo.errors %}
+							<div class="invalid-feedback">{{ erro }}</div>
+						{% endfor %}
+					{% else %}
+						{{ form_editarpost.corpo(class="input-criarconta") }}
+					{% endif %}
+				</div>
+				<div class="form-actions-criarpost">
+					{{ form_editarpost.btn_submit_criarpost(class="btn-criarpost") }}
+				</div>
+			</form>
+		</div>
+	</div>
+{% endif %}
+
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+{% endblock %}

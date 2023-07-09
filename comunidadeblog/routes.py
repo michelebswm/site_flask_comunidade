@@ -1,4 +1,4 @@
-from flask import render_template, request, flash, redirect, url_for
+from flask import render_template, request, flash, redirect, url_for, abort
 from comunidadeblog import app, database, bcrypt
 from comunidadeblog.forms import FormLogin, FormCriarConta, FormEditarPerfil, FormCriarPost
 from comunidadeblog.models import Usuario, Post
@@ -10,7 +10,7 @@ from PIL import Image
 
 @app.route('/')
 def home():
-    lista_posts = Post.query.all()
+    lista_posts = Post.query.order_by(Post.id.desc())
     return render_template('home.html', lista_posts=lista_posts)
 
 @app.route('/usuarios')
@@ -134,3 +134,34 @@ def editar_perfil():
     foto_perfil = url_for('static', filename='fotos_perfil/{}'.format(current_user.foto_perfil))
     return render_template('editar_perfil.html', form_editarperfil=form_editarperfil, foto_perfil=foto_perfil)
 
+
+@app.route('/post/<post_id>', methods=['GET', 'POST'])
+@login_required
+def exibir_post(post_id):
+    post = Post.query.get(post_id)  # Com o método get eu pego o id da tabela post
+    if current_user == post.autor:
+        form_editarpost = FormCriarPost()   # Não foi criado uma nova classe form porque os campos são os mesmos
+        if request.method == 'GET':     # Trazer os campos preenchidos para facilitar a edição
+            form_editarpost.titulo.data = post.titulo
+            form_editarpost.corpo.data = post.corpo
+        elif form_editarpost.validate_on_submit():
+            post.titulo = form_editarpost.titulo.data
+            post.corpo = form_editarpost.corpo.data
+            database.session.commit()
+            flash('Post atualizado com sucesso', 'alert-success')
+            return redirect(url_for('home'))
+    else:
+        form_editarpost = None
+    return render_template('post.html', post=post, form_editarpost=form_editarpost)
+
+@app.route('/post/<post_id>/excluir', methods=['GET', 'POST'])
+@login_required
+def excluir_post(post_id):
+    post = Post.query.get(post_id)
+    if current_user == post.autor:
+        database.session.delete(post)
+        database.session.commit()
+        flash('Post excluido com sucesso', 'alert-danger')
+        return redirect(url_for('home'))
+    else:
+        abort(403)  # Proibição de acesso
