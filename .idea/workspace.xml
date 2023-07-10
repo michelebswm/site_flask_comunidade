@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da66474a-4f94-4fce-841e-d2bf0ceb42e1" name="Changes" comment="edicao-perfil">
-      <change afterPath="$PROJECT_DIR$/comunidadeblog/static/js/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comunidadeblog/templates/post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comunidadeblog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comunidadeblog/templates/contato.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comunidadeblog/templates/minhaconta.html" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/templates/minhaconta.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comunidadeblog/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/templates/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comunidadeblog/templates/usuarios.html" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/templates/usuarios.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instance/projeto.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/projeto.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
