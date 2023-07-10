@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da66474a-4f94-4fce-841e-d2bf0ceb42e1" name="Changes" comment="edicao-perfil">
+      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/templates/contato.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/templates/minhaconta.html" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/templates/minhaconta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/templates/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comunidadeblog/templates/usuarios.html" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeblog/templates/usuarios.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instance/projeto.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/projeto.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
